@@ -5,20 +5,20 @@ import { FaLock } from "react-icons/fa";
 
 const Login = () => {
   return (
-    <div className='wrapper'>
+    <div className='wrapperL'>
       <form action="">
         <h1>Login</h1>
-        <div className="input-box">
+        <div className="input-boxL">
           <input type="email" placeholder='Usuario' required />
-          <FaUser className='icon'/>
+          <FaUser className='iconL'/>
         </div>
-        <div className="input-box">
+        <div className="input-boxL">
           <input type="password" placeholder='Contraseña' required />
-          <FaLock className='icon'/>
+          <FaLock className='iconL'/>
         </div>
         <button type="submit">Iniciar sesión</button>
-        <div className="link-registro">
-          <p>¿No tienes una cuenta? <a href="#">Registrar</a></p>
+        <div className="link-registroL">
+          <p>¿No tienes una cuenta? <a href="/register">Registrarse</a></p>
         </div>
       </form>
     </div>
