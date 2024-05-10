@@ -25,9 +25,9 @@ const Inicio = () => {
             </ul>
            </nav>
            <div className="icons">
-             <img src="imagenes/usuario.png" className="logo"/>
+             
              <FaCircleUser className="logo"/>
-             <img src="imagenes/carrito-de-compras.png" className="logo"/>
+             
              
              <Link to="/carrito"><FaShoppingCart className="logo"/></Link>
          </div>
