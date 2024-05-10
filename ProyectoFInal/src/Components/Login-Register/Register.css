@@ -8,57 +8,55 @@ body{
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: #c5cec9;
+    background:#c5cec9;
 }
 
-.wrapperL{
+.wrapper{
     width: 420px;
-    background: #3BAEA0;
-    color:aliceblue;
+    background:white;
     border-radius: 30px;
     padding: 20px;
-    box-shadow: 0 0 10px rgb(255, 255, 255);
+    box-shadow: 0 0 5px gray;
     
 }
 
-.wrapperL h1 {
-    background: #DD943C;
+.wrapper h1 {
+    background:#3BAEA0;
     border-radius: 10px;
     font-size: 36px;
     text-align: center;
-    width: 300px;
+    width: 350px;
     color: black;
-    transform: translateX(13%);
+    transform: translateX(4.5%);
 }
 
-.wrapperL .input-boxL{
-    position: relative;
-    width: 100% ;
-    height: 50px;
-    margin: 30px 0;
-    background: #74d6ca;
-    border-radius: 40px;
+.wrapper .input-box{
+    position:relative;
+    width: 100%;
+    height: 40px;
+    margin: 20px 0;
+    background: #E2E0D8;
+    border-radius: 10px;
 }
 
-.input-boxL input{
+.input-box input{
     width: 100%;
     height: 100%;
     background: transparent;
     outline: none;
     border: none;
-    border: 2px solid  black;
     border-radius: 40px;
     color: black;
     font-size: 16px;
     padding: 20px 45px 20px 20px;
 }
 
-.input-boxL input::placeholder{
-    color: rgb(77, 96, 112);
+.input-box input::placeholder{
+    color: #858D79;
     
 }
 
-.input-boxL .iconL{
+.input-box .icon{
     position: absolute;
     right: 20px;
     top: 50%;
@@ -67,35 +65,35 @@ body{
     color: rgb(0, 0, 0);
 }
 
-.wrapperL button{
+.wrapper button{
     width: 100%;
     height: 45px;
-    background: aliceblue;
+    background:#DD943C;
     border: none;
     outline: none;
     border-radius: 10px;
     cursor: pointer;
     font-size: 18px;
-    font-weight: 700;
+    font-weight: 750;
 }
 
-.wrapperL button:hover{
-    background: rgb(241, 238, 207) ;
+.wrapper button:hover{
+    background:  #cd844c;
 }
 
-.wrapperL .link-registroL{
+.wrapper .link-login{
     font-size: 15px;
     text-align: center;
     margin-top: 10px;
-    color: white;
+    color:#17675e;
 }
 
-.link-registroL p a{
+.link-login p a{
     color: rgb(23, 26, 50);
     text-decoration: none;
     font-weight: 500;
 }
 
-.link-registroL p a:hover{
+.link-login p a:hover{
     text-decoration:underline;
 }
