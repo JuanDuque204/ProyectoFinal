@@ -13,11 +13,10 @@ export const agregarUsers = (user) => {
   console.log(usuarios);
 }
 
-export const ValidarUsers = (user) => {
-  const users = user.user;
-  const password = user.password;
-  if (usuarios.find(User => users == User.user) !== undefined) {
-    const userFound = usuarios.find(User => users == User.user && password == User.password);
+export const ValidarUsers = (_user) => {
+  const {user, password} = _user;
+  if (usuarios.find(User => user == User.user) !== undefined) {
+    const userFound = usuarios.find(User => user == User.user && password == User.password);
     if (userFound !== undefined) {
       console.log("Iniciando Sesión...");
       console.log(userFound);

@@ -29,6 +29,32 @@ const Register = () => {
         password: data.password
       }
       agregarUsers(userNew)
+      const data1 = {
+        nombre: data.nombre,
+        apellido: data.apellido,
+        email: data.user,
+        contrase: data.password
+      };
+
+      fetch('http://localhost:3001/users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data1)
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Ocurrió un error al hacer la solicitud.');
+          }
+          return response.json();
+        })
+        .then(responseData => {
+          console.log(responseData);
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
       console.log("Usuario:", data.user);
       console.log("Nombre:", data.nombre);
       console.log("Apellido:", data.apellido);
