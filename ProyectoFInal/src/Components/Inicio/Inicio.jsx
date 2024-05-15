@@ -14,7 +14,7 @@ const Inicio = () => {
     <header className="header">
         <div className="menu-container">
             <label htmlFor="menu">
-              <img src="imagenes/logo.jpg" className="logo"/>
+              <img src="logo.jpg" alt="Logo"/>
            </label>
            <nav className="navbar">
             <ul>
@@ -25,11 +25,9 @@ const Inicio = () => {
             </ul>
            </nav>
            <div className="icons">
-             <img src="imagenes/usuario.png" className="logo" />
+             
              <Link to= "/Login"><FaCircleUser className='logo'/></Link>
-             
-             <img src="imagenes/carrito-de-compras.png" className="logo"/>
-             
+            
              <Link to="/carrito"><FaShoppingCart className="logo"/></Link>
          </div>
         </div>
