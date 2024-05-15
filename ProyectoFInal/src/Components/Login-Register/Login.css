@@ -57,6 +57,10 @@ body{
     color: rgb(77, 96, 112);
     
 }
+.input-boxL input:focus{
+    background-color: rgb(206, 242, 255) ;
+    
+}
 
 .input-boxL .iconL{
     position: absolute;

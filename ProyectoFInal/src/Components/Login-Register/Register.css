@@ -1,20 +1,7 @@
-* {
-    margin: 0;
-    box-sizing: border-box;
-}
-body{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background:#c5cec9;
-}
-
 .wrapper{
     width: 420px;
     background:white;
-    border-radius: 30px;
+    border-radius: 20px;
     padding: 20px;
     box-shadow: 0 0 5px gray;
     
@@ -45,7 +32,7 @@ body{
     background: transparent;
     outline: none;
     border: none;
-    border-radius: 40px;
+    border-radius: 10px;
     color: black;
     font-size: 16px;
     padding: 20px 45px 20px 20px;
@@ -75,6 +62,7 @@ body{
     cursor: pointer;
     font-size: 18px;
     font-weight: 750;
+
 }
 
 .wrapper button:hover{
@@ -96,4 +84,8 @@ body{
 
 .link-login p a:hover{
     text-decoration:underline;
+}
+label{
+    color: rgb(165, 3, 3);
+    font-weight: 500;
 }
