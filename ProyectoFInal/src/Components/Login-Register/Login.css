@@ -1,0 +1,105 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #c5cec9;
+}
+
+.wrapperL{
+    width: 420px;
+    background: #3BAEA0;
+    color:aliceblue;
+    border-radius: 30px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgb(255, 255, 255);
+    
+}
+
+.wrapperL h1 {
+    background: #DD943C;
+    border-radius: 10px;
+    font-size: 36px;
+    text-align: center;
+    width: 300px;
+    color: black;
+    transform: translateX(13%);
+}
+
+.wrapperL .input-boxL{
+    position: relative;
+    width: 100% ;
+    height: 50px;
+    margin: 30px 0;
+    background: #74d6ca;
+    border-radius: 40px;
+}
+
+.input-boxL input{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    outline: none;
+    border: none;
+    border: 2px solid  black;
+    border-radius: 40px;
+    color: black;
+    font-size: 16px;
+    padding: 20px 45px 20px 20px;
+}
+
+.input-boxL input::placeholder{
+    color: rgb(77, 96, 112);
+    
+}
+.input-boxL input:focus{
+    background-color: rgb(206, 242, 255) ;
+    
+}
+
+.input-boxL .iconL{
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: rgb(0, 0, 0);
+}
+
+.wrapperL button{
+    width: 100%;
+    height: 45px;
+    background: aliceblue;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.wrapperL button:hover{
+    background: rgb(241, 238, 207) ;
+}
+
+.wrapperL .link-registroL{
+    font-size: 15px;
+    text-align: center;
+    margin-top: 10px;
+    color: white;
+}
+
+.link-registroL p a{
+    color: rgb(23, 26, 50);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.link-registroL p a:hover{
+    text-decoration:underline;
+}
