@@ -1,34 +1,29 @@
 /*#root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0;
 
-  box-sizing: border-box
 }
-* {
-  margin: 0;
-}
-body{
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  display: flex;
-
-  min-height: 100vh;
-  background:#c5cec9;
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
-.header{
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: #24242e;
-  padding: 16px;
-  width: 100%;
-  z-index: 1000;
-  
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
-.header img{
-  width: 5%;
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
 }
 
 .body-app{
