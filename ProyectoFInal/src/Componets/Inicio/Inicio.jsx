@@ -2,40 +2,73 @@
 import './Inicio.css'
 
 // eslint-disable-next-line no-unused-vars
-import React from 'react'
-import { FaCircleUser } from "react-icons/fa6";
-import { FaShoppingCart } from "react-icons/fa";
-import {Link} from "react-router-dom"
-
+import React, { useState } from 'react';
+import Logo from '../Imagenes/logo.jpg';
+import Usuario from '../Imagenes/Usuario.png';
+import Carrito from '../Imagenes/carrito-de-compras.png'
+import Descuento from '../Imagenes/descuento.jpg'
+import Oferta1 from '../Imagenes/ofert-1.webp'
+import Oferta2 from '../Imagenes/ofert-2.webp'
+import Oferta3 from '../Imagenes/ofert-3.webp'
+import Prod1 from '../Imagenes/1.webp'
+import Prod2 from '../Imagenes/2.webp'
+import Prod3 from '../Imagenes/3.webp'
+import Prod4 from '../Imagenes/4.webp'
+import Prod5 from '../Imagenes/5.webp'
+import Prod6 from '../Imagenes/6.webp'
+import Icon1 from '../Imagenes/i1.png'
+import Icon2 from '../Imagenes/i2.png'
+import Icon3 from '../Imagenes/i3.png'
+import Servicio from '../Imagenes/servicio.jpg'
+import Producto from '../Imagenes/producto.jpg'
+import Calidad from '../Imagenes/calidad.jpg'
+import Facebook from '../Imagenes/facebook.png'
+import Instagram from '../Imagenes/instagram.png'
+import X from '../Imagenes/signo-de-twitter.png'
 
 const Inicio = () => {
+    const [mostrarTextoProducto1, setMostrarTextoProducto1] = useState(false);
+    const [mostrarTextoProducto2, setMostrarTextoProducto2] = useState(false);
+    const [mostrarTextoProducto3, setMostrarTextoProducto3] = useState(false);
+  
+    // Funciones para alternar la visibilidad del texto para cada producto
+    const toggleTextoProducto1 = () => {
+      setMostrarTextoProducto1(!mostrarTextoProducto1);
+    };
+  
+    const toggleTextoProducto2 = () => {
+      setMostrarTextoProducto2(!mostrarTextoProducto2);
+    };
+  
+    const toggleTextoProducto3 = () => {
+      setMostrarTextoProducto3(!mostrarTextoProducto3);
+    };
   return (
    <div>
-    <header className="header">
+    <header className="header" id="header">
         <div className="menu-container">
             <label htmlFor="menu">
-              <img src="imagenes/logo.jpg" className="logo"/>
+              <img src={Logo} alt="Logo de la pagina " className="logo"/>
            </label>
            <nav className="navbar">
             <ul>
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#">Nosotros</a></li>
-                <li><a href="#">Productos</a></li>
-                <li><a href="#">Contacto</a></li>
+                <li><a href="#header">Inicio</a></li>
+                <li><a href="#footer">Nosotros</a></li>
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="#Oferta">Ofertas</a></li>
             </ul>
            </nav>
            <div className="icons">
-             
-             <FaCircleUser className="logo"/>
-             
-             
-             <Link to="/carrito"><FaShoppingCart className="logo"/></Link>
+           
+             <img src={Usuario} alt="usuario" className="logo"/>
+             <img src={Carrito} alt="carrito" className="logo"/>
+         
          </div>
         </div>
 
         <div className="header-content">
             <div className="header-img">
-                <img src="imagenes/descuento.jpg" alt=""/>
+                <img src={Descuento} alt="desc"/>
             </div>
             <div className="header-txt">
                 <h1>Ofertas especiales</h1>
@@ -43,95 +76,100 @@ const Inicio = () => {
             </div>
         </div>
     </header>
-    <section className="ofert">
+    <section className="ofert" id="Oferta">
         <div className="ofert-1">
             <div className="ofert-img">
-                <img src="imagenes/ofert-1.webp" alt=""/>
+                <img src={Oferta1} alt="oferta1"/>
             </div>
             <div className="ofert-txt">
-                <h3>Producto 1</h3>
-                <a href="#" className="btn-2">Informacion</a>
+                <h3>Buzo</h3>
+                <a  className="btn-2" onClick={toggleTextoProducto1}>Información</a>
+                {mostrarTextoProducto1 && <p>Saco de franela con motivo delante, mangas raglán y cuello redondo. Ribete acanalado en cuello, puños y bajo..</p>}
             </div>
         </div>
+      
+        <div className="ofert-1">
+            <div className="ofert-img">
+                <img src={Oferta2} alt="oferta2"/>
+            </div>
+            <div className="ofert-txt">
+                <h3>Pantalon</h3>
+                <a  className="btn-2" onClick={toggleTextoProducto2}>Información</a>
+                {mostrarTextoProducto2 && <p>Pantalón de traje en lino vaporoso y piernas con línea de quiebre. Modelo con cierre de cremallera con botón, bolsillos laterales y bolsillos traseros de ribete con botón.</p>}
+            </div>
+        </div>
+        
 
         <div className="ofert-1">
             <div className="ofert-img">
-                <img src="imagenes/ofert-2.webp" alt=""/>
+                <img src={Oferta3} alt="oferta3"/>
             </div>
             <div className="ofert-txt">
-                <h3>Producto 2</h3>
-                <a href="#" className="btn-2">Informacion</a>
+                <h3>Camiseta</h3>
+                <a  className="btn-2" onClick={toggleTextoProducto3}>Información</a>
+                {mostrarTextoProducto3 && <p>Camisa de mangas cortas en popelina de algodón con cuello resort. Modelo de tapeta lisa, bolsillo en el pecho y canesú en la espalda.</p>}
             </div>
         </div>
-
-        <div className="ofert-1">
-            <div className="ofert-img">
-                <img src="imagenes/ofert-3.webp" alt=""/>
-            </div>
-            <div className="ofert-txt">
-                <h3>Producto 3</h3>
-                <a href="#" className="btn-2">Informacion</a>
-            </div>
-        </div>
+      
     </section>
 
-    <main className="products" id="lista-1">
+    <main className="products" id="productos">
         <h2>Productos</h2>
 
         <div className="product-content">
 
             <div className="product">
-                <img src="imagenes/1.webp" alt=""/>
+                <img src={Prod1} alt="prod1"/>
                 <div className="product-txt">
-                    <h3>Elisyum</h3>
-                    <p>calidad premium</p>
-                    <p className="precio">$200</p>
-                    <a href="#" className="agregar-carrito btn-2" data-id="1">agregar al carrito</a>
+                    <h3>Jean</h3>
+                    <p>Baggy low jeans</p>
+                    <p className="precio">$120000</p>
+                    <a href="#" className="agregar-carrito btn-2" data-id="1">Agregar al carrito</a>
                 </div>
             </div>
             <div className="product">
-                <img src="imagenes/2.webp" alt=""/>
+                <img src={Prod2} alt="prod2"/>
                 <div className="product-txt">
-                    <h3>Elisyum</h3>
-                    <p>calidad premium</p>
-                    <p className="precio">$200</p>
-                    <a href="#" className="agregar-carrito btn-2" data-id="2">agregar al carrito</a>
+                    <h3>Hoddie</h3>
+                    <p>Oversize</p>
+                    <p className="precio">$90000</p>
+                    <a href="#" className="agregar-carrito btn-2" data-id="2">Agregar al carrito</a>
                 </div>
             </div>
             <div className="product">
-                <img src="imagenes/3.webp" alt=""/>
+                <img src={Prod3} alt="prod3"/>
                 <div className="product-txt">
-                    <h3>Elisyum</h3>
-                    <p>calidad premium</p>
-                    <p className="precio">$200</p>
-                    <a href="#" className="agregar-carrito btn-2" data-id="3">agregar al carrito</a>
+                    <h3>Falda</h3>
+                    <p>Mini falda con fruncidos</p>
+                    <p className="precio">$85000</p>
+                    <a href="#" className="agregar-carrito btn-2" data-id="3">Agregar al carrito</a>
                 </div>
             </div>
             <div className="product">
-                <img src="imagenes/4.webp" alt=""/>
+                <img src={Prod4} alt="prod4"/>
                 <div className="product-txt">
-                    <h3>Elisyum</h3>
-                    <p>calidad premium</p>
-                    <p className="precio">$200</p>
-                    <a href="#" className="agregar-carrito btn-2" data-id="4">agregar al carrito</a>
+                    <h3>Jean</h3>
+                    <p>Flared High Jeans</p>
+                    <p className="precio">$130000</p>
+                    <a href="#" className="agregar-carrito btn-2" data-id="4">Agregar al carrito</a>
                 </div>
             </div>
             <div className="product">
-                <img src="imagenes/5.webp" alt=""/>
+                <img src={Prod5} alt="prod5"/>
                 <div className="product-txt">
-                    <h3>Elisyum</h3>
-                    <p>calidad premium</p>
-                    <p className="precio">$200</p>
-                    <a href="#" className="agregar-carrito btn-2" data-id="5">agregar al carrito</a>
+                    <h3>Vestido</h3>
+                    <p>Vestido ajustado acanalado</p>
+                    <p className="precio">$115000</p>
+                    <a href="#" className="agregar-carrito btn-2" data-id="5">Agregar al carrito</a>
                 </div>
             </div>
             <div className="product">
-                <img src="imagenes/6.webp" alt=""/>
+                <img src={Prod6} alt="prod6"/>
                 <div className="product-txt">
-                    <h3>Elisyum</h3>
-                    <p>calidad premium</p>
-                    <p className="precio">$200</p>
-                    <a href="#" className="agregar-carrito btn-2" data-id="6">agregar al carrito</a>
+                    <h3>Camiseta</h3>
+                    <p>Camiseta con estilo estampado</p>
+                    <p className="precio">$50000</p>
+                    <a href="#" className="agregar-carrito btn-2" data-id="6">Agregar al carrito</a>
                 </div>
             </div>
 
@@ -142,29 +180,29 @@ const Inicio = () => {
 
         <div className="icon-1">
             <div className="icon-img">
-                <img src="imagenes/i1.png" alt=""/>
+                <img src={Icon1} alt="icono1"/>
             </div>
             <div className="icon-txt">
-                <h3>Hola como estas</h3>
-                <p>xjnjxnsdbcjdxjxjsnxjsdnxsjcsjdcnsjc</p>
+                <h3>Tela</h3>
+                <p>Tela de excelente calidad y amigable con el ambiente</p>
             </div>
         </div>
         <div className="icon-1">
             <div className="icon-img">
-                <img src="imagenes/i2.png" alt=""/>
+                <img src={Icon2} alt="icono2"/>
             </div>
             <div className="icon-txt">
-                <h3>Hola como estas</h3>
-                <p>xjnjxnsdbcjdxjxjsnxjsdnxsjcsjdcnsjc</p>
+                <h3>Tallas</h3>
+                <p>Ajustable a cualquier tipo de cuerpo</p>
             </div>
         </div>
         <div className="icon-1">
             <div className="icon-img">
-                <img src="imagenes/i3.png" alt=""/>
+                <img src={Icon3} alt="icono3"/>
             </div>
             <div className="icon-txt">
-                <h3>Hola como estas</h3>
-                <p>xjnjxnsdbcjdxjxjsnxjsdnxsjcsjdcnsjc</p>
+                <h3>Variedad</h3>
+                <p>Gran variedad de productos y costos</p>
             </div>
         </div>
 
@@ -172,42 +210,33 @@ const Inicio = () => {
 
     <section className="blog">
         <div className="blog-1">
-            <img src="imagenes/servicio.jpg" alt=""/>
-            <h3>Blog 1</h3>
-            <p>bcbhdcbc
-                jbcbcusbcdsbcd
-                csbcsgcscidscjkschcihsch
-                jdbcgcyuscsdc
+            <img src={Servicio} alt="serv"/>
+            <h3>Servicio</h3>
+            <p>Contamos con una excente atencion al cliente, soporte a preguntas y agilidad a sugerencias
             </p>
         </div>
 
         <div className="blog-1">
-            <img src="imagenes/producto.jpg" alt=""/>
-            <h3>Blog 1</h3>
-            <p>bcbhdcbc
-                jbcbcusbcdsbcd
-                csbcsgcscidscjkschcihsch
-                jdbcgcyuscsdc
+            <img src={Producto} alt="producto"/>
+            <h3>Productos</h3>
+            <p>Variedad de productos, prendas, accesorios, acomodados a tus gustos y precios
             </p>
         </div>
 
         <div className="blog-1">
-            <img src="imagenes/calidad.jpg" alt=""/>
-            <h3>Blog 1</h3>
-            <p>bcbhdcbc
-                jbcbcusbcdsbcd
-                csbcsgcscidscjkschcihsch
-                jdbcgcyuscsdc
+            <img src={Calidad} alt="calidad"/>
+            <h3>Calidad</h3>
+            <p>Contamos con los mejores precios para la mejor calidad
             </p>
         </div>
     </section>
 
-    <footer>
+    <footer id="footer">
         <div className="footer-left">
-            <img src="imagenes/logo.jpg" alt="Icono de la página"/>
-            <a href="https://www.facebook.com"><img src="imagenes/facebook.png" alt="Facebook"/></a>
-            <a href="https://www.twitter.com"><img src="imagenes/instagram.png" alt="Twitter"/></a>
-            <a href="https://www.instagram.com"><img src="imagenes/signo-de-twitter.png" alt="Instagram"/></a>
+            <img src={Logo} alt="Icono de la página"/>
+            <a href="https://www.facebook.com"><img src={Facebook} alt="Facebook"/></a>
+            <a href="https://www.twitter.com"><img src={Instagram} alt="Twitter"/></a>
+            <a href="https://www.instagram.com"><img src={X} alt="Instagram"/></a>
         </div>
         <div className="footer-right">
             <div className="footer-column">
