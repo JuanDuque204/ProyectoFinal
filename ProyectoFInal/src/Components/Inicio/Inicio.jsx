@@ -5,6 +5,7 @@ import './Inicio.css'
 import React, { useState } from 'react';
 import {FaCircleUser} from "react-icons/fa6";
 import { FaShoppingCart } from 'react-icons/fa';
+import { AgregarCart } from '../Carrito/Cart';
 import { Link } from 'react-router-dom';
 import Logo from '../Imagenes/logo.jpg';
 import Descuento from '../Imagenes/descuento.jpg'
@@ -28,6 +29,23 @@ import Instagram from '../Imagenes/instagram.png'
 import X from '../Imagenes/signo-de-twitter.png'
 
 const Inicio = () => {
+    
+  const BotonAgregarCarrito=(event)=>{
+    const productContainer = event.target.closest('.product-txt');
+
+    
+      // Obtener el ID del producto desde el atributo 'data-id' del botón
+      const productId = event.target.getAttribute('data-id');
+
+      // Obtener el nombre del producto (texto dentro del h3)
+      const productName = productContainer.querySelector('h3').textContent;
+
+      // Obtener el precio del producto (texto dentro de p.precio)
+      const productPrice = productContainer.querySelector('p.precio').textContent;
+
+  AgregarCart(productId,productName,productPrice)
+}
+
     const [mostrarTextoProducto1, setMostrarTextoProducto1] = useState(false);
     const [mostrarTextoProducto2, setMostrarTextoProducto2] = useState(false);
     const [mostrarTextoProducto3, setMostrarTextoProducto3] = useState(false);
@@ -121,11 +139,11 @@ const Inicio = () => {
 
             <div className="product">
                 <img src={Prod1} alt="prod1"/>
-                <div className="product-txt">
+                <div className="product-txt" >
                     <h3>Jean</h3>
                     <p>Baggy low jeans</p>
                     <p className="precio">$120000</p>
-                    <a href="#" className="agregar-carrito btn-2" data-id="1">Agregar al carrito</a>
+                    <button type="button"  className="agregar-carrito btn-2" data-id="1" onClick={BotonAgregarCarrito}>Agregar al carrito </button>
                 </div>
             </div>
             <div className="product">

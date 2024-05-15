@@ -1,15 +1,23 @@
 import React from 'react';
 import './Cart.css';
 
+const productos=[];
+
+export const AgregarCart=(id,names,price)=>{
+  productos.push(
+    {
+      id:id,
+      names:names,
+      price:price
+    }
+)
+}
 const Cart = () => {
-  const products = [
-    { id: 1, name: 'Camiseta', price: 25 },
-    { id: 2, name: 'Pantalón', price: 40 },
-    { id: 3, name: 'Zapatos', price: 55 }
-  ];
+
+
 
   const calculateTotal = () => {
-    return products.reduce((total, product) => total + product.price, 0);
+    return productos.reduce((total, product) => total + product.price, 0);
   };
 
   const Pagar = () => {
@@ -25,7 +33,7 @@ const Cart = () => {
     <div className="cart-container">
       <h2 className="cart-title">Carrito de Compras</h2>
       <ul className="product-list">
-        {products.map(product => (
+        {productos.map(product => (
           <li key={product.id} className="product-item">
             <span className="product-name">{product.name}</span>
             <span className="product-price">${product.price}</span>
