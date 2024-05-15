@@ -3,8 +3,8 @@ export let usuarios = [];
 const usuario = {
   nombres: "Yefry",
   apellidos: "Delgado",
-  user: "yefry@gmail.com",
-  password: '1234'
+  email: "yefry@gmail.com",
+  contrase: '1234'
 };
 usuarios.push(usuario);
 
