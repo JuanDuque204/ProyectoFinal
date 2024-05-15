@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
 
 
 const Register = () => {
-  const [data, setData] = useState({ nombre: "", apellido: "", user: "", password: "" })
+  const [data, setData] = useState({ nombre: "", apellido: "", user: "", password: "" });
   const [mensaje, setMensaje] = useState("");
 
   const cambioDatos = (event) => {
@@ -31,37 +31,34 @@ const Register = () => {
       }
       // agregarUsers(userNew)
       InsertDB(userNew)
-        .then(flag => {
-          if (flag) {
+    .then(status => {
+        if (status === 200) {
             Swal.fire({
-              position: "top-end",
-              icon: "success",
-              title: "Usuario registrado",
-              showConfirmButton: false,
-              timer: 1500
+                position: "top-end",
+                icon: "success",
+                title: "Usuario registrado exitosamente",
+                showConfirmButton: false,
+                timer: 1500
             });
-          }else if(flag == 409){
+        } else if (status === 409) {
             Swal.fire({
-              icon: "error",
-              title: "Oops...",
-              text: "Usuario ya registrado",
+                icon: "error",
+                title: "Oops...",
+                text: "El usuario ya existe",
             });
-          } else {
-            Swal.fire({
-              icon: "error",
-              title: "Oops...",
-              text: "Fallo la conexión al servidor",
-            });
-          }
-        })
-        .catch(error => {
-          console.error('Error:', error);
-          Swal.fire({
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        Swal.fire({
             icon: "error",
             title: "Oops...",
-            text: "Error al hacer la solicitud",
-          });
+            text: "El usuario ya existe",
         });
+    });
+
+
+
       // console.log("CUsuario:", data.user);
       // console.log("CNombre:", data.nombre);
       // console.log("CApellido:", data.apellido);
@@ -80,7 +77,7 @@ const Register = () => {
           <input type="text" placeholder='Apellidos' name='apellido' value={data.apellido} onChange={cambioDatos} required />
         </div>
         <div className="input-box">
-          <input type="email" placeholder='Usuario' name='user' value={data.user} onChange={cambioDatos} required />
+          <input type="email" placeholder='Email' name='user' value={data.user} onChange={cambioDatos} required />
           <FaUser className='icon' />
         </div>
         <div className="input-box">
