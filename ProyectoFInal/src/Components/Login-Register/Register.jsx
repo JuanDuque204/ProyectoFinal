@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import './Register.css';
 import { FaUser } from "react-icons/fa";
 import { FaLock } from "react-icons/fa";
-import { agregarUsers } from './Listas';
+//import { agregarUsers } from './Listas';
+import { InsertDB } from './api.jsx';
+import Swal from 'sweetalert2';
 
 
 const Register = () => {
@@ -16,7 +18,6 @@ const Register = () => {
 
   const cambioBoton = (event) => {
     event.preventDefault();
-
     if (data.password !== data.passwordConfirm) {
       setMensaje("Las contraseñas no coinciden");
       setData({ ...data, password: "", passwordConfirm: "" })
@@ -25,41 +26,47 @@ const Register = () => {
       const userNew = {
         nombre: data.nombre,
         apellido: data.apellido,
-        user: data.user,
-        password: data.password
-      }
-      agregarUsers(userNew)
-      const data1 = {
-        nombre: data.nombre,
-        apellido: data.apellido,
         email: data.user,
         contrase: data.password
-      };
-
-      fetch('http://localhost:3001/users', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data1)
-      })
-        .then(response => {
-          if (!response.ok) {
-            throw new Error('Ocurrió un error al hacer la solicitud.');
+      }
+      // agregarUsers(userNew)
+      InsertDB(userNew)
+        .then(flag => {
+          if (flag) {
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "Usuario registrado",
+              showConfirmButton: false,
+              timer: 1500
+            });
+          }else if(flag == 409){
+            Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: "Usuario ya registrado",
+            });
+          } else {
+            Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: "Fallo la conexión al servidor",
+            });
           }
-          return response.json();
-        })
-        .then(responseData => {
-          console.log(responseData);
         })
         .catch(error => {
           console.error('Error:', error);
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Error al hacer la solicitud",
+          });
         });
-      console.log("Usuario:", data.user);
-      console.log("Nombre:", data.nombre);
-      console.log("Apellido:", data.apellido);
-      console.log("Contraseña:", data.password);
-      console.log("Contraseña confirm:", data.passwordConfirm);
+      // console.log("CUsuario:", data.user);
+      // console.log("CNombre:", data.nombre);
+      // console.log("CApellido:", data.apellido);
+      // console.log("CContraseña:", data.password);
+      // console.log("CContraseña confirm:", data.passwordConfirm);
     }
   }
   return (
