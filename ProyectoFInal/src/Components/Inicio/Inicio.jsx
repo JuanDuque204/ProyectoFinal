@@ -3,9 +3,10 @@ import './Inicio.css'
 
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react';
+import {FaCircleUser} from "react-icons/fa6";
+import { FaShoppingCart } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import Logo from '../Imagenes/logo.jpg';
-import Usuario from '../Imagenes/Usuario.png';
-import Carrito from '../Imagenes/carrito-de-compras.png'
 import Descuento from '../Imagenes/descuento.jpg'
 import Oferta1 from '../Imagenes/ofert-1.webp'
 import Oferta2 from '../Imagenes/ofert-2.webp'
@@ -60,8 +61,8 @@ const Inicio = () => {
            </nav>
            <div className="icons">
            
-             <img src={Usuario} alt="usuario" className="logo"/>
-             <img src={Carrito} alt="carrito" className="logo"/>
+            <Link to="/login"><FaCircleUser className='logo'/></Link>
+            <Link to="/carrito"><FaShoppingCart className='logo'/></Link>
          
          </div>
         </div>
