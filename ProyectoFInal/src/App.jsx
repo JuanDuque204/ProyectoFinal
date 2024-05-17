@@ -8,8 +8,9 @@ import Cart from './Components/Carrito/Cart.jsx'
 function App() {
   return (
     <>
+    
         <Routes>
-        <Route path='/Inicio' element = {<Inicio/>}/>
+        <Route path='/' element = {<Inicio/>}/>
         <Route path='/register' element = {<Register/>}/>
         <Route path='/login' element = {<Login/>}/>
         <Route path='/carrito' element={<Cart/>}/>

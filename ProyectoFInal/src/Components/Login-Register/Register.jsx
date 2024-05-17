@@ -2,15 +2,15 @@ import React, { useState } from 'react';
 import './Register.css';
 import { FaUser } from "react-icons/fa";
 import { FaLock } from "react-icons/fa";
-//import { agregarUsers } from './Listas';
 import { InsertDB } from './api.jsx';
 import Swal from 'sweetalert2';
-
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
   const [data, setData] = useState({ nombre: "", apellido: "", user: "", password: "" });
   const [mensaje, setMensaje] = useState("");
-
+  const navigate = useNavigate();
+  
   const cambioDatos = (event) => {
     const { name, value } = event.target;
     setData({ ...data, [name]: value });
@@ -28,42 +28,35 @@ const Register = () => {
         apellido: data.apellido,
         email: data.user,
         contrase: data.password
-      }
-      // agregarUsers(userNew)
+      };
       InsertDB(userNew)
-    .then(status => {
-        if (status === 200) {
+        .then(response => {
+          if (response.status === 200) {
             Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: "Usuario registrado exitosamente",
-                showConfirmButton: false,
-                timer: 1500
+              position: "top-end",
+              icon: "success",
+              title: "Usuario registrado exitosamente",
+              showConfirmButton: false,
+              timer: 1500
+            }).then(() => {
+              navigate('/login'); // Redirigir al componente de login
             });
-        } else if (status === 409) {
+          } else if (response.status === 409) {
             Swal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: "El usuario ya existe",
+              icon: "error",
+              title: "Oops...",
+              text: "El usuario ya existe",
             });
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        Swal.fire({
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          Swal.fire({
             icon: "error",
             title: "Oops...",
-            text: "El usuario ya existe",
+            text: "Fallo la conexión al servidor",
+          });
         });
-    });
-
-
-
-      // console.log("CUsuario:", data.user);
-      // console.log("CNombre:", data.nombre);
-      // console.log("CApellido:", data.apellido);
-      // console.log("CContraseña:", data.password);
-      // console.log("CContraseña confirm:", data.passwordConfirm);
     }
   }
   return (
@@ -97,5 +90,4 @@ const Register = () => {
     </div>
   );
 };
-
 export default Register

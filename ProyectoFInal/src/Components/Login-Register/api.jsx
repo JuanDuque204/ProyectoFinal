@@ -1,27 +1,3 @@
-// export const InsertDB = (data) => {
-//     const flag = true;
-//     fetch('http://localhost:3001/users', {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify(data)
-//     })
-//         .then(response => {
-//             if (!response.ok) {
-//                 throw new Error('Ocurrió un error al hacer la solicitud.');
-//             }
-//             return response;
-//         })
-//         .then(responseData => {
-//             console.log(responseData);
-//         })
-//         .catch(error => {
-//             console.error('Error:', error);
-//         });
-//         return flag;
-// }
-
 export const InsertDB = (data) => {
     return new Promise((resolve, reject) => {
         fetch('http://localhost:3001/users', {
@@ -33,12 +9,14 @@ export const InsertDB = (data) => {
         })
             .then(response => {
                 if (!response.ok) {
-                    throw new Error('Ocurrió un error al hacer la solicitud.');
+                    if (response.status === 409) {
+                        resolve(response); // Resuelve la Promise con el response completo
+                    } else {
+                        throw new Error('Ocurrió un error al hacer la solicitud.');
+                    }
+                } else {
+                    resolve(response); // Resuelve la Promise con el response completo
                 }
-                return response.status; // Devuelve el status del response
-            })
-            .then(status => {
-                resolve(status); // Resuelve la Promise con el status
             })
             .catch(error => {
                 console.error('Error:', error);
@@ -47,8 +25,16 @@ export const InsertDB = (data) => {
     });
 };
 
-
-
-
-
+export const ValidarUser = async (email, contrase) => {
+    try {
+        const response = await fetch(`http://localhost:3001/users/${email}/${contrase}`);
+        if (!response.ok) {
+            throw new Error('Error al validar el usuario');
+        }
+        const data = await response.json();
+        return data;
+    } catch (err) {
+        return { error: err.message };
+    }
+};
 
