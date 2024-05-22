@@ -46,7 +46,7 @@ const Cart = () => {
       </ul>
       <p className="cart-total">Total: ${calculateTotal()}</p>
       <div className="button-container">
-      <button className="pay-button" onClick={() => alert('Implementa lógica de pago')}>Pagar</button>
+      <button className="pay-button" onClick={() => alert('Pago')}>Pagar</button>
         <button className="cancel-button" onClick={() => setCartItems([])}>Cancelar</button>
       </div>
     </div>
