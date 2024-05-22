@@ -26,6 +26,7 @@ import Instagram from '../Imagenes/instagram.png'
 import X from '../Imagenes/signo-de-twitter.png'
 import { UserContext } from '../../Contexto';
 import Swal from 'sweetalert2';
+import { MdOutlineInventory } from "react-icons/md";
 
 
 const Inicio = () => {
@@ -110,7 +111,7 @@ const Inicio = () => {
                         <div>
                             {user && user.id_usuario === 1 && (
                                 <div>
-                                    <Link to="/inventario"><button className='agregar-carrito btn-2'>Inventario</button></Link>
+                                    <Link to="/inventario"><MdOutlineInventory className='logo'/></Link>
                                     
                                 </div>
                             )}

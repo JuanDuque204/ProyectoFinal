@@ -6,7 +6,7 @@ import { Routes, Route } from 'react-router-dom'
 import Cart from './Components/Carrito/Cart.jsx'
 import { UserProvider } from './Contexto.jsx';
 import { PrivateRoute, PublicRoute, PrivateRouteAdmin } from "./Components/Login-Register/RutasPrivadasPublicas.jsx"
-import Inventario from "./Components/inventario.jsx"
+import InventariO from "./Components/Sis-Inventario/Inventario.jsx"
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
           <Route path='/register' element={<PublicRoute element={<Register />} />}/>
           <Route path='/login' element={<PublicRoute element={<Login />} />} />
           <Route path='/carrito' element={<PrivateRoute element={<Cart />} />} />
-          <Route path='/inventario' element={<PrivateRouteAdmin element={<Inventario />} />} />
+          <Route path='/inventario' element={<PrivateRouteAdmin element={<InventariO/>} />} />
         </Routes>
       </UserProvider>
     </>

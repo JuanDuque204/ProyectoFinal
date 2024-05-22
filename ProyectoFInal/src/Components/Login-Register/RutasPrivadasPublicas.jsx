@@ -17,7 +17,7 @@ export const PrivateRoute = ({ element }) => {
         }
     }, [user]);
 
-    return user ? element : <Navigate to="/login" state={{ from: location }} />;
+    return user ? element : <Navigate to="/" state={{ from: location }} />;
 };
 
 export const PublicRoute = ({ element }) => {
@@ -34,7 +34,7 @@ export const PrivateRouteAdmin = ({ element }) => {
             Swal.fire({
                 icon: 'error',
                 title: 'Acceso denegado',
-                text: 'No has iniciado sesión. Por favor, inicia sesión para acceder a esta página.',
+                text: 'Solo los administradores tienen acceso',
             });
         }
     }, [user]);

@@ -1,11 +1,11 @@
-
-// eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'; 
+import { RiDeleteBin6Line } from "react-icons/ri";
+import { FaRegEdit } from "react-icons/fa";
 
 import './Inventario.css'
 
-const App = () => {
+const InventariO = () => {
     const [productos, setProductos] = useState([
       { codigo: 2123, producto: 'JEAN', descripcion: 'Baggy low jeans', precio: 120000, existencias: 1188 },
       { codigo: 1122, producto: 'HODDIE', descripcion: 'Oversize', precio: 90000, existencias: 4996 },
@@ -101,9 +101,9 @@ const App = () => {
                 <td>{producto.precio}</td>
                 <td>{producto.existencias}</td>
                 <td>
-                <button className="btn btn-warning me-2" onClick={() => handleEdit(producto)}>Actualizar</button>
+                <button className="btn btn-warning me-2" onClick={() => handleEdit(producto)}><FaRegEdit /></button>
                   
-                  <button className="btn btn-danger bi bi-trash3-fill" onClick={() => handleDelete(producto.codigo)}>Eliminar</button>
+                  <button className="btn btn-danger bi bi-trash3-fill" onClick={() => handleDelete(producto.codigo)}><RiDeleteBin6Line /></button>
                 
                 </td>
               </tr>
@@ -115,4 +115,4 @@ const App = () => {
     );
   };
   
-  export default App;
+  export default InventariO;
