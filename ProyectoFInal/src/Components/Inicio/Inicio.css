@@ -1,0 +1,254 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+}
+img{
+    max-width: 100%;
+}
+.menu-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #333; 
+}
+
+.logo {
+    width: 70px; 
+    height: 50px; 
+    border-radius: 50px;
+    color:  #DD943C;
+    cursor: pointer;
+}
+.navbar {
+    margin-left: 20px; 
+}
+
+.navbar ul {
+    list-style: none; 
+    display: flex;
+}
+
+.navbar ul li a{
+    margin-right: 20px; 
+    font-size: 22px;
+    color:  #DD943C;
+}
+.inicio-sesion{
+    margin-right: 20px; 
+    font-size: 22px;
+    color:  #DD943C;
+}
+
+.icons {
+    display: flex;
+}
+
+.icons img {
+    margin-left: 10px; 
+    width: 30px; 
+    height: 30px;
+    
+}
+
+.header-content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+    padding: 0 200px;
+}
+.header-img{
+    flex-basis: 70%;
+    text-align: center;
+}
+.header-txt{
+    flex-basis: 50%;
+    text-align: center;
+}
+.header-txt h1{
+    margin-top: 150px;
+    font-size: 70px;
+    text-transform: uppercase;
+    justify-content: space-between;
+    line-height: 1;
+    color:  #DD943C;
+   
+    margin-bottom: 15px;
+}
+.header-txt p{
+    font-size: 20px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+.ofert{
+    padding: 20px 0 0 0;
+    display: flex;
+    justify-content: space-between;
+    background-color: #333; 
+    padding: 50px 0 80px 0;
+}
+.ofert-1{
+    display: flex;
+    align-items: center;
+    flex-basis: calc(33.3%-35px);
+    background-color: #3BAEA0;
+    padding: 35px;
+    border-radius: 30px;
+}
+.ofert-img{
+    flex-basis: 50%;
+    margin-right: 15px;
+   
+}
+.ofert-img img{
+    width: 250px;
+    border-radius: 30px;
+}
+.ofert.txt{
+    flex-basis: 50%;
+    text-align: center;
+}
+.ofert.txt h3{
+    color:black;
+    font-size: 25px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+.btn-2{
+    display: inline-block;
+    padding: 7px 10px;
+    background-color: #DD943C;
+    color: black;
+    border-radius: 5px;
+    font-size: 15px;
+}
+.products{
+    padding: 50px 0 100px 0;
+    text-align: center;
+   
+}
+.products h2{
+    
+    color: black;
+    font-size: 100%;
+    text-transform: uppercase;
+    margin-bottom: 50px;
+}
+.product-content{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+   
+}
+.product{
+    text-align: center;
+    padding: 30px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 1);
+  
+}
+.product img{
+    width: 250px;
+    height: 370px;
+    margin-bottom: 20px;
+}
+.product h3{
+    font-size: 20px;
+    color: black;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+.product p, .precio{
+    font-size: 16px;
+    color: black;
+    margin-bottom: 15px;
+}
+
+.precio{
+    font-weight: 800;
+}
+.iconos{
+    padding: 50px 0 100px 0;
+    display: flex;
+    justify-content: space-between;
+    background-color:  #333;
+    
+}
+.icon-1{
+    flex-basis: calc(33.3%-30px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: #3BAEA0;
+}
+.icon-txt h3{
+    font-size: 20px;
+    color: black;
+    text-transform: uppercase;
+}
+.icon-txt p{
+    font-size: 16px;
+    color: black;
+}
+.blog {
+    padding: 50px 0 150px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.blog-1 {
+    flex: 0 0 calc(33.33% - 20px);
+    margin-bottom: 20px; 
+}
+
+.blog-1 img {
+    width: 100%; 
+}
+
+.blog-1 h3{
+    font-size: 20px;
+    color: black;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+footer {
+    background-color: #333; 
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-left {
+    display: flex;
+    align-items: center;
+}
+
+.footer-left img {
+    margin-right: 10px;
+    width: 30px;
+    height: auto; 
+    background-color:  #DD943C;
+    border-radius: 60px;
+}
+
+.footer-right {
+    display: flex;
+}
+
+.footer-column {
+    margin-right: 20px; 
+}
+
+.footer-column h4 {
+    margin: 0; 
+}
