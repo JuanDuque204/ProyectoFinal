@@ -1,8 +1,10 @@
 import React from 'react';
 import './Cart.css';
 import { RiDeleteBin6Line } from "react-icons/ri";
-
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 const productos=[];
+
 
 
 export const AgregarCart=(id,names,price)=>{
@@ -14,6 +16,37 @@ export const AgregarCart=(id,names,price)=>{
     }
 )
 }
+export const agregarProducto = (id,names,price) => {
+
+  const nuevoProducto={
+    id:id,
+    names:names,
+    price:price
+  }
+  
+  // Verifica si el producto ya existe en el carrito
+  const productoExistente = productos.find(producto => producto.id === nuevoProducto.id);
+
+  if (productoExistente) {
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: "Bienvenido",
+      showConfirmButton: true,
+    })
+      
+      navigate('/carrito');
+  return;
+    }
+else{
+  productos.push(nuevoProducto);
+  Swal.fire({
+    icon: 'success',
+    title: 'Añadido al carrito',
+    text: 'Se ha añadido al carrito con exito',
+});
+}}
+
 const Cart = () => {
   const calculateTotal = () => {
     return productos.reduce((total, product) => total + product.price, 0);
@@ -50,7 +83,7 @@ const Cart = () => {
         <button className="cancel-button" onClick={() => setCartItems([])}>Cancelar</button>
       </div>
     </div>
-  );
+  );  
 };
 
 export default Cart;

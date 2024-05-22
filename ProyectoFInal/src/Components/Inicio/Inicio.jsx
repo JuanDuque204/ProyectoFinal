@@ -2,7 +2,7 @@ import './Inicio.css'
 import React, { useContext, useState } from 'react';
 import { FaCircleUser } from "react-icons/fa6";
 import { FaShoppingCart } from 'react-icons/fa';
-import Cart, { AgregarCart } from '../Carrito/Cart';
+import Cart, { AgregarCart, agregarProducto } from '../Carrito/Cart';
 import { Link, useNavigate } from 'react-router-dom';
 import Logo from '../Imagenes/logo.jpg';
 import Descuento from '../Imagenes/descuento.jpg'
@@ -49,11 +49,15 @@ const Inicio = () => {
         // Convertir el precio a un número y realizar cualquier manipulación necesaria
         const productPrice = parseFloat(productPriceText.replace(/\D/g, '')); // Eliminar cualquier carácter que no sea un número
 
-        AgregarCart(productId, productName, productPrice);
+        // AgregarCart(productId, productName, productPrice);
+
+        
+        agregarProducto(productId,productName,productPrice);
     };
     const handleAgregarCarrito = (event) => {
         if (user) {
             BotonAgregarCarrito(event);
+           
         } else {
             Swal.fire({
                 icon: 'error',
@@ -64,7 +68,7 @@ const Inicio = () => {
     };
     const handleCarrito = (event) => {
         if (user) {
-            navigate("/carrito")
+            navigate('/carrito');
         } else {
             Swal.fire({
                 icon: 'error',
@@ -205,7 +209,7 @@ const Inicio = () => {
                             <h3>Hoddie</h3>
                             <p>Oversize</p>
                             <p className="precio">$90000</p>
-                            <a href="#" className="agregar-carrito btn-2" data-id="2">Agregar al carrito</a>
+                            <button type="button" className="agregar-carrito btn-2" data-id="2" onClick={handleAgregarCarrito}>Agregar al carrito </button>
                         </div>
                     </div>
                     <div className="product">
@@ -214,7 +218,7 @@ const Inicio = () => {
                             <h3>Falda</h3>
                             <p>Mini falda con fruncidos</p>
                             <p className="precio">$85000</p>
-                            <a href="#" className="agregar-carrito btn-2" data-id="3">Agregar al carrito</a>
+                            <button type="button" className="agregar-carrito btn-2" data-id="3" onClick={handleAgregarCarrito}>Agregar al carrito </button>
                         </div>
                     </div>
                     <div className="product">
@@ -223,7 +227,7 @@ const Inicio = () => {
                             <h3>Jean</h3>
                             <p>Flared High Jeans</p>
                             <p className="precio">$130000</p>
-                            <a href="#" className="agregar-carrito btn-2" data-id="4">Agregar al carrito</a>
+                            <button type="button" className="agregar-carrito btn-2" data-id="4" onClick={handleAgregarCarrito}>Agregar al carrito </button>
                         </div>
                     </div>
                     <div className="product">
@@ -232,7 +236,7 @@ const Inicio = () => {
                             <h3>Vestido</h3>
                             <p>Vestido ajustado acanalado</p>
                             <p className="precio">$115000</p>
-                            <a href="#" className="agregar-carrito btn-2" data-id="5">Agregar al carrito</a>
+                            <button type="button" className="agregar-carrito btn-2" data-id="5" onClick={handleAgregarCarrito}>Agregar al carrito </button>
                         </div>
                     </div>
                     <div className="product">
@@ -241,7 +245,7 @@ const Inicio = () => {
                             <h3>Camiseta</h3>
                             <p>Camiseta con estilo estampado</p>
                             <p className="precio">$50000</p>
-                            <a href="#" className="agregar-carrito btn-2" data-id="6">Agregar al carrito</a>
+                            <button type="button" className="agregar-carrito btn-2" data-id="6" onClick={handleAgregarCarrito}>Agregar al carrito </button>
                         </div>
                     </div>
 
