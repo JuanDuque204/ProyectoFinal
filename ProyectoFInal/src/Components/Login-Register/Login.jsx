@@ -1,16 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import './Login.css';
 import { FaUser } from "react-icons/fa";
 import { FaLock } from "react-icons/fa";
 import { ValidarUser } from './api';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../../Contexto';
 
-export const logueado = false;
 const Login = () => {
 
   const [data, setData] = useState({ user: "", password: "" })
   const navigate = useNavigate();
+  const {login} = useContext(UserContext);
   
   const cambioDatos = (event) => {
     const { name, value } = event.target;
@@ -33,12 +34,14 @@ const Login = () => {
         });
       } else {
         if (response.length > 0) {
+          
           Swal.fire({
             position: "top-end",
             icon: "success",
             title: "Bienvenido",
             showConfirmButton: true,
           }).then(() => {
+            login(response[0]);
             navigate('/');
           });
         } else {

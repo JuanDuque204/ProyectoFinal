@@ -1,9 +1,9 @@
 import './Inicio.css'
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { FaCircleUser } from "react-icons/fa6";
 import { FaShoppingCart } from 'react-icons/fa';
-import { AgregarCart } from '../Carrito/Cart';
-import { Link } from 'react-router-dom';
+import Cart, { AgregarCart } from '../Carrito/Cart';
+import { Link, useNavigate } from 'react-router-dom';
 import Logo from '../Imagenes/logo.jpg';
 import Descuento from '../Imagenes/descuento.jpg'
 import Oferta1 from '../Imagenes/ofert-1.webp'
@@ -24,29 +24,56 @@ import Calidad from '../Imagenes/calidad.jpg'
 import Facebook from '../Imagenes/facebook.png'
 import Instagram from '../Imagenes/instagram.png'
 import X from '../Imagenes/signo-de-twitter.png'
-import { logueado } from '../Login-Register/Login';
+import { UserContext } from '../../Contexto';
+import Swal from 'sweetalert2';
+
 
 const Inicio = () => {
+    const { user, logout } = useContext(UserContext);
+    const [showLogout, setShowLogout] = useState(false);
+    const navigate = useNavigate();
 
     const BotonAgregarCarrito = (event) => {
         const productContainer = event.target.closest('.product-txt');
-    
+
         // Obtener el ID del producto desde el atributo 'data-id' del botón
         const productId = event.target.getAttribute('data-id');
-    
+
         // Obtener el nombre del producto (texto dentro del h3)
         const productName = productContainer.querySelector('h3').textContent;
-    
+
         // Obtener el precio del producto (texto dentro de p.precio)
         const productPriceText = productContainer.querySelector('p.precio').textContent;
-    
+
         // Convertir el precio a un número y realizar cualquier manipulación necesaria
         const productPrice = parseFloat(productPriceText.replace(/\D/g, '')); // Eliminar cualquier carácter que no sea un número
-    
+
         AgregarCart(productId, productName, productPrice);
     };
-    
-    
+    const handleAgregarCarrito = (event) => {
+        if (user) {
+            BotonAgregarCarrito(event);
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Inicia sesión.',
+            });
+        }
+    };
+    const handleCarrito = (event) => {
+        if (user) {
+            navigate("/carrito")
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Inicia sesión.',
+            });
+        }
+    };
+
+
 
     const [mostrarTextoProducto1, setMostrarTextoProducto1] = useState(false);
     const [mostrarTextoProducto2, setMostrarTextoProducto2] = useState(false);
@@ -80,14 +107,37 @@ const Inicio = () => {
                         </ul>
                     </nav>
                     <div className="icons">
+                        <div>
+                            {user && user.id_usuario === 1 && (
+                                <div>
+                                    <Link to="/inventario"><button className='agregar-carrito btn-2'>Inventario</button></Link>
+                                    
+                                </div>
+                            )}
+                        </div>
 
-                        <Link to="/login"><FaCircleUser className='logo' />{logueado && <span>Estas dentro</span>}</Link>
-                        <Link to="/carrito"><FaShoppingCart className='logo' /></Link>
+                        <Link to="/login"><FaCircleUser className='logo' /></Link>
+                        <div>
+                            {user ? (
+                                <div
+                                    onMouseEnter={() => setShowLogout(true)}
+                                    onMouseLeave={() => setShowLogout(false)}
+                                >
+                                    <h2 className='inicio-sesion'>Bienvenido, {user.nombre}</h2>
+                                    {showLogout && (
+                                        <button className='agregar-carrito btn-2' onClick={logout}>Cerrar sesión</button>
+                                    )}
+                                </div>
 
+                            ) : (
+                                <h2 className='inicio-sesion'>Inicio de sesión</h2>
+                            )}
+                        </div>
+                        <FaShoppingCart className='logo' onClick={handleCarrito} />
                     </div>
                 </div>
 
-                <div className="header-content">
+                <marquee><div className="header-content">
                     <div className="header-img">
                         <img src={Descuento} alt="desc" />
                     </div>
@@ -95,7 +145,7 @@ const Inicio = () => {
                         <h1>Ofertas especiales</h1>
                         <p>Estrena las mejores prendas</p>
                     </div>
-                </div>
+                </div></marquee>
             </header>
             <section className="ofert" id="Oferta">
                 <div className="ofert-1">
@@ -145,7 +195,7 @@ const Inicio = () => {
                             <h3>Jean</h3>
                             <p>Baggy low jeans</p>
                             <p className="precio">$120000</p>
-                            <button type="button" className="agregar-carrito btn-2" data-id="1" onClick={BotonAgregarCarrito}>Agregar al carrito </button>
+                            <button type="button" className="agregar-carrito btn-2" data-id="1" onClick={handleAgregarCarrito}>Agregar al carrito </button>
                         </div>
                     </div>
                     <div className="product">

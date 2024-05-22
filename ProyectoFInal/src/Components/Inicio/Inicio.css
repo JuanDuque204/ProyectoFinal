@@ -25,7 +25,7 @@ img{
     height: 50px; 
     border-radius: 50px;
     color:  #DD943C;
-    
+    cursor: pointer;
 }
 .navbar {
     margin-left: 20px; 
@@ -37,6 +37,11 @@ img{
 }
 
 .navbar ul li a{
+    margin-right: 20px; 
+    font-size: 22px;
+    color:  #DD943C;
+}
+.inicio-sesion{
     margin-right: 20px; 
     font-size: 22px;
     color:  #DD943C;
