@@ -1,7 +1,9 @@
 import React from 'react';
 import './Cart.css';
+import { RiDeleteBin6Line } from "react-icons/ri";
 
 const productos=[];
+
 
 export const AgregarCart=(id,names,price)=>{
   productos.push(
@@ -13,9 +15,6 @@ export const AgregarCart=(id,names,price)=>{
 )
 }
 const Cart = () => {
-
-
-
   const calculateTotal = () => {
     return productos.reduce((total, product) => total + product.price, 0);
   };
@@ -27,6 +26,9 @@ const Cart = () => {
   const Cancelar = () => {
     alert('Compra cancelada'); 
   };
+  const EliminarProduct = () =>{
+
+  }
   
 
   return (
@@ -37,7 +39,8 @@ const Cart = () => {
           <li key={product.id} className="product-item">
             <span className="product-name">{product.names}</span>
             <span className="product-price">${product.price}</span>
-           
+            <span className='product-price'><input type="number" name="" id="" placeholder='#' className='product-quantity' /></span>
+            <span className='product-price'><button className='button-delete' onClick={EliminarProduct}><RiDeleteBin6Line /></button></span>
           </li>
         ))}
       </ul>

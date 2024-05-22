@@ -1,79 +1,95 @@
 .cart-container {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .cart-title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  .product-list {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .product-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 0;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .product-name {
-    flex: 1;
-    font-weight: bold;
-  }
-  
-  .product-price {
-    margin-left: 20px;
-  }
-  
-  .quantity-controls {
-    display: flex;
-    align-items: center;
-  }
-  
-  
-  .cart-total {
-    font-weight: bold;
-    font-size: 1.2rem;
-    margin-top: 20px;
-    text-align: center;
-  }
-  
-  .button-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-  }
-  
-  .pay-button,
-  .cancel-button {
-    padding: 10px 20px;
-    margin: 0 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    text-transform: uppercase;
-  }
-  
-  .pay-button {
-    background-color: #28a745;
-    color: #fff;
-  }
-  
-  .cancel-button {
-    background-color: #dc3545;
-    color: #fff;
-  }
-  
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #d8dbe3;
+  box-shadow: 0 0 10px #3BAEA0;
+}
+
+.cart-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+  background-color: #DD943C;
+  border-radius: 5px;
+  color: black;
+}
+
+.product-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.product-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.product-name {
+  flex: 1;
+  font-weight: bold;
+}
+
+.product-price {
+  margin-left: 20px;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+}
+
+
+.cart-total {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pay-button,
+.cancel-button {
+  padding: 10px 20px;
+  margin: 0 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.pay-button {
+  background-color: #3BAEA0;
+  color: #fff;
+}
+
+.cancel-button {
+  background-color: #DD943C;
+  color: #fff;
+}
+
+.product-quantity {
+  width: 40px;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+
+.button-delete {
+  border-radius: 5px;
+  border: 1px solid black;
+  width: 25px;
+  background-color: rgba(203, 12, 12, 0.858);
+  color: #fff;
+}
