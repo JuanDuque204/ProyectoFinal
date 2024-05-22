@@ -35,7 +35,7 @@ const Cart = () => {
       <ul className="product-list">
         {productos.map(product => (
           <li key={product.id} className="product-item">
-            <span className="product-name">{product.name}</span>
+            <span className="product-name">{product.names}</span>
             <span className="product-price">${product.price}</span>
            
           </li>
