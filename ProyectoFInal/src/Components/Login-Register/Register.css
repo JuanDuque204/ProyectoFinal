@@ -1,3 +1,16 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #c5cec9;
+}
+
 .wrapper{
     width: 420px;
     background:white;
