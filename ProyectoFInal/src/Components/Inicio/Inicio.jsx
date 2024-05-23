@@ -1,5 +1,4 @@
 import './Inicio.css'
-// eslint-disable-next-line no-unused-vars
 import React, { useContext, useState } from 'react';
 import { FaCircleUser } from "react-icons/fa6";
 import { FaShoppingCart } from 'react-icons/fa';
@@ -52,13 +51,13 @@ const Inicio = () => {
 
         // AgregarCart(productId, productName, productPrice);
 
-        
-        agregarProducto(productId,productName,productPrice);
+
+        agregarProducto(productId, productName, productPrice);
     };
     const handleAgregarCarrito = (event) => {
         if (user) {
             BotonAgregarCarrito(event);
-           
+
         } else {
             Swal.fire({
                 icon: 'error',
@@ -116,8 +115,8 @@ const Inicio = () => {
                         <div>
                             {user && user.id_usuario === 1 && (
                                 <div>
-                                    <Link to="/inventario"><MdOutlineInventory className='logo'/></Link>
-                                    
+                                    <Link to="/inventario"><MdOutlineInventory className='logo' /></Link>
+
                                 </div>
                             )}
                         </div>
