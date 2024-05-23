@@ -16,7 +16,7 @@ create table venta (
 );
 
 create table producto(
-    id_producto int auto_increment primary key, 
+    id_producto int primary key, 
     nombre varchar(50), 
     descripcion text, 
     precio decimal(10, 2), 
