@@ -1,8 +1,8 @@
+// eslint-disable-next-line no-unused-vars
 import React from 'react';
 import './Cart.css';
 import { RiDeleteBin6Line } from "react-icons/ri";
 import Swal from 'sweetalert2';
-import { useNavigate } from 'react-router-dom';
 const productos=[];
 
 
@@ -35,7 +35,7 @@ export const agregarProducto = (id,names,price) => {
       showConfirmButton: true,
     })
       
-      navigate('/carrito');
+      
   return;
     }
 else{
