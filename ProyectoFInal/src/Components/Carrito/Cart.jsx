@@ -30,8 +30,8 @@ export const agregarProducto = (id,names,price) => {
   if (productoExistente) {
     Swal.fire({
       position: "top-end",
-      icon: "success",
-      title: "Bienvenido",
+      icon: "warning",
+      title: "Producto ya añadido al carrito",
       showConfirmButton: true,
     })
       
