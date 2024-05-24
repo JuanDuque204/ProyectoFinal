@@ -19,6 +19,7 @@ export const UserProvider = ({ children }) => {
         setUser(null);
         // Eliminar el usuario de localStorage
         localStorage.removeItem('user');
+        localStorage.removeItem('ProductosId');
     };
 
     return (
