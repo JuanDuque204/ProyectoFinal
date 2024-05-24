@@ -1,6 +1,6 @@
 export const InsertDB = (data) => {
     return new Promise((resolve, reject) => {
-        fetch('http://localhost:3001/users', {
+        fetch('http://localhost:3004/users', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -27,7 +27,7 @@ export const InsertDB = (data) => {
 
 export const ValidarUser = async (email, contrase) => {
     try {
-        const response = await fetch(`http://localhost:3001/users/${email}/${contrase}`);
+        const response = await fetch(`http://localhost:3004/users/${email}/${contrase}`);
         if (!response.ok) {
             throw new Error('Error al validar el usuario');
         }

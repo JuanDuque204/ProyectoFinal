@@ -10,7 +10,7 @@ const getAllProducts = async (req, res) => {
   };
 
   const postProducts = async (req, res) => {
-    const { nombre, descripcion, precio, cantidad_existente } = req.body;
+    const { id_producto, nombre, descripcion, precio, cantidad_existente } = req.body;
   
     try {
     //   // Consulta para verificar si el producto ya existe en la base de datos
@@ -25,7 +25,7 @@ const getAllProducts = async (req, res) => {
   
       // Si el correo electrónico no está registrado, insertar el nuevo producto
       await connection.query(
-        "INSERT INTO producto ( nombre, descripcion, precio,cantidad_existente) VALUES (?, ?, ?, ?)", [nombre, descripcion,precio, cantidad_existente]
+        "INSERT INTO producto (id_producto, nombre, descripcion, precio,cantidad_existente) VALUES (?,?, ?, ?, ?)", [id_producto,nombre, descripcion,precio, cantidad_existente]
       );
   
       res.status(200).send("producto agregado con éxito");
