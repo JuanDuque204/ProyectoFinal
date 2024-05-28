@@ -5,6 +5,7 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { FaRegEdit } from "react-icons/fa";
 
 import './Inventario.css'
+import { InsertDB } from '../Login-Register/api';
 
 const InventariO = () => {
     const [productos, setProductos] = useState([
@@ -31,9 +32,20 @@ const InventariO = () => {
       const { name, value } = e.target;
       setNuevoProducto({ ...nuevoProducto, [name]: value });
     };
+   
+ 
   
     const handleSubmit = (e) => {
       e.preventDefault(); //evita que la pagina se recargue
+      const newProduct = {
+        id_producto: nuevoProducto.codigo,
+        nombre: nuevoProducto.producto,
+        descripcion: nuevoProducto.descripcion,
+        precio: nuevoProducto.precio,
+        cantidad_existente: nuevoProducto.existencias
+      };
+      console.log(newProduct);
+      InsertDB(newProduct,'http://localhost:3001/products')
       if (modoEdicion) {
         setProductos(productos.map(producto => (producto.codigo === productoEditado.codigo ? nuevoProducto : producto)));
         setModoEdicion(false);
