@@ -3,7 +3,7 @@ import './Inicio.css'
 import React, { useContext, useState } from 'react';
 import { FaCircleUser } from "react-icons/fa6";
 import { FaShoppingCart } from 'react-icons/fa';
-import Cart, { AgregarCart, agregarProducto } from '../Carrito/Cart';
+import Cart, {agregarProducto } from '../Carrito/Cart';
 import { Link, useNavigate } from 'react-router-dom';
 import Logo from '../Imagenes/logo.jpg';
 import Descuento from '../Imagenes/descuento.jpg'
@@ -53,7 +53,7 @@ const Inicio = () => {
         // AgregarCart(productId, productName, productPrice);
 
         
-        agregarProducto(productId,productName,productPrice);
+        agregarProducto(productId);
     };
     const handleAgregarCarrito = (event) => {
         if (user) {
