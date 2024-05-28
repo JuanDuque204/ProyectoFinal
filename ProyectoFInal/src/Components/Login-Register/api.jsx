@@ -28,7 +28,7 @@ export const InsertDB = (data, url) => {
 export const ValidarUser = async (email, contrase) => {
     try {
         const response = await fetch(`http://localhost:3004/users/${email}/${contrase}`);
-        const response = await fetch(`http://localhost:3004/users/${email}/${contrase}`);
+        
         if (!response.ok) {
             throw new Error('Error al validar el usuario');
         }
