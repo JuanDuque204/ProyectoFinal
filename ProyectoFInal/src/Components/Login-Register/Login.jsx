@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useState, useContext } from 'react';
 import './Login.css';
 import { FaUser } from "react-icons/fa";

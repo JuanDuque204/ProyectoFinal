@@ -1,6 +1,6 @@
-export const InsertDB = (data) => {
+export const InsertDB = (data, url) => {
     return new Promise((resolve, reject) => {
-        fetch('http://localhost:3004/users', {
+        fetch(url, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -28,6 +28,7 @@ export const InsertDB = (data) => {
 export const ValidarUser = async (email, contrase) => {
     try {
         const response = await fetch(`http://localhost:3004/users/${email}/${contrase}`);
+        
         if (!response.ok) {
             throw new Error('Error al validar el usuario');
         }
@@ -38,3 +39,15 @@ export const ValidarUser = async (email, contrase) => {
     }
 };
 
+export const GetProducts = async () => {
+    try {
+        const response = await fetch(`http://localhost:3004/products`);
+        if (!response.ok) {
+            throw new Error('Error al traer los productos');
+        }
+        const data = await response.json();
+        return data[0];
+    } catch (err) {
+        return { error: err.message };
+    }
+};

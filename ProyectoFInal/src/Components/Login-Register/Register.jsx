@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react';
 import './Register.css';
 import { FaUser } from "react-icons/fa";
@@ -29,7 +30,7 @@ const Register = () => {
         email: data.user,
         contrase: data.password
       };
-      InsertDB(userNew)
+      InsertDB(userNew,'http://localhost:3004/users')
         .then(response => {
           if (response.status === 200) {
             Swal.fire({
