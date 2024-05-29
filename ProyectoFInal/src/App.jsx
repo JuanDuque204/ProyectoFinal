@@ -1,4 +1,3 @@
-//import './App.css'
 import Inicio from "./Components/Inicio/Inicio.jsx"
 import Login from './Components/Login-Register/Login.jsx'
 import Register from './Components/Login-Register/Register.jsx'
@@ -12,13 +11,14 @@ function App() {
   return (
     <>
       <UserProvider>
-        <Routes>
-          <Route path='/' element={<Inicio />} />
-          <Route path='/register' element={<PublicRoute element={<Register />} />}/>
-          <Route path='/login' element={<PublicRoute element={<Login />} />} />
-          <Route path='/carrito' element={<PrivateRoute element={<Cart />} />} />
-          <Route path='/inventario' element={<PrivateRouteAdmin element={<InventariO/>} />} />
-        </Routes>
+          <Routes>
+            <Route path='/' element={<Inicio />} />
+            <Route path='/register' element={<PublicRoute element={<Register />} />} />
+            <Route path='/login' element={<PublicRoute element={<Login />} />} />
+            <Route path='/carrito' element={<PrivateRoute element={<Cart />} />} />
+            <Route path='/inventario' element={<PrivateRouteAdmin element={<InventariO />} />} />
+          </Routes>
+
       </UserProvider>
     </>
   )

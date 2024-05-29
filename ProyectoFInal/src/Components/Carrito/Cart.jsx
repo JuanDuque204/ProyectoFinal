@@ -78,17 +78,30 @@ const Cart = () => {
     return productos.reduce((total, product) => total + parseFloat(product.precio), 0);
   };
 
-  const Pagar = () => {
-    alert('Pago realizado con éxito'); 
+ const Pagar = () => {
+    Swal.fire({
+      icon: 'success',
+      title: 'Pago realizado con éxito',
+      text: 'Gracias por su compra!',
+    });
+    localStorage.removeItem('ProductosId');
+
   };
 
   const Cancelar = () => {
-    alert('Compra cancelada'); 
+    Swal.fire({
+      icon: 'warning',
+      title: 'Compra cancelada',
+      text: 'Su compra ha sido cancelada.',
+    });
+    localStorage.removeItem('ProductosId');
+ 
   };
-  const EliminarProduct = () =>{
 
+  const EliminarProduct = (id) => {
+    const nuevosProductosId = ProductosId.filter(productId => id !== productId);
+    localStorage.setItem('ProductosId', JSON.stringify(nuevosProductosId));
   }
-  
   
 
   return (
@@ -101,14 +114,14 @@ const Cart = () => {
             <span className="product-price">${product.precio}</span>
             <span className='product-name'>{product.descripcion}</span>
             <span className='product-price'><input type="number" name="" id="" placeholder='#' className='product-quantity' /></span>
-            <span className='product-price'><button className='button-delete' onClick={EliminarProduct}><RiDeleteBin6Line /></button></span>
+            <span className='product-price'><button className='button-delete' onClick={() => EliminarProduct(product.id_producto)}><RiDeleteBin6Line /></button></span>
           </li>
         ))}
       </ul>
       <p className="cart-total">Total: ${calculateTotal()}</p>
       <div className="button-container">
-      <button className="pay-button" onClick={() => alert('Pago')}>Pagar</button>
-        <button className="cancel-button" onClick={() => setCartItems([])}>Cancelar</button>
+      <button className="pay-button" onClick={Pagar}>Pagar</button>
+        <button className="cancel-button" onClick={Cancelar}>Cancelar</button>
       </div>
     </div>
   );  

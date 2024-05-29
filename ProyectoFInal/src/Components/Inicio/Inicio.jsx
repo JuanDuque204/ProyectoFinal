@@ -169,7 +169,7 @@ const Inicio = () => {
                         <img src={Oferta2} alt="oferta2" />
                     </div>
                     <div className="ofert-txt">
-                        <h3>Pantalon</h3>
+                        <h3>Pantalón</h3>
                         <button className="btn-2" onClick={toggleTextoProducto2}>Información</button>
                         {mostrarTextoProducto2 && <p>Pantalón de traje en lino vaporoso y piernas con línea de quiebre. Modelo con cierre de cremallera con botón, bolsillos laterales y bolsillos traseros de ribete con botón.</p>}
                     </div>

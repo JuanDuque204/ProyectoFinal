@@ -75,6 +75,7 @@ const InventariO = () => {
           setProductos(productos.map(producto => (producto.id_producto === productoEditado.id_producto ? updatedProduct : producto)));
           setModoEdicion(false);
           setProductoEditado(null);
+          window.location.reload();
         } else {
           setProductos([...productos, updatedProduct]);
         }
@@ -162,7 +163,8 @@ const InventariO = () => {
           <label>Existencias</label>
           <input type="number" className="form-control" required name="cantidad_existente" value={nuevoProducto.cantidad_existente} onChange={handleChange} />
         </div>
-        <button type="submit" className="btn btn-primary mt-3">{modoEdicion ? 'Actualizar' : 'Guardar'}</button>
+        <button type="submit" className="btn btn-primary mt-3">{modoEdicion ? 'Actualizar' : 'Guardar'}</button> <bt/>
+        <a href="/" className="btn btn-primary mt-3">Volver al inicio</a>
       </form>
       <h2 className="mt-5">Lista de Productos</h2>
       <table className="table">

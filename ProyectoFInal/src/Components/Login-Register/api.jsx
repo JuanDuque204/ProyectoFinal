@@ -7,7 +7,7 @@ export const InsertDB = (data, url) => {
             },
             body: JSON.stringify(data)
         })
-            .then(response => {
+            .then(response => response.json().then(data => {
                 if (!response.ok) {
                     if (response.status === 409) {
                         resolve(response); // Resuelve la Promise con el response completo
@@ -15,15 +15,16 @@ export const InsertDB = (data, url) => {
                         throw new Error('Ocurrió un error al hacer la solicitud.');
                     }
                 } else {
-                    resolve(response); // Resuelve la Promise con el response completo
+                    resolve(data); // Resuelve la Promise con el data
                 }
-            })
+            }))
             .catch(error => {
                 console.error('Error:', error);
                 reject(error); // Rechaza la Promise con el error
             });
     });
 };
+
 
 export const ValidarUser = async (email, contrase) => {
     try {

@@ -11,7 +11,7 @@ export const connection = createPool({
 })
 
 try {
-    console.log("Coneccion exitosa a la base de datos");
+    console.log("Conexión exitosa a la base de datos");
 } catch (err) {
     console.log("Error al conectar a la base datos: ", err.message);
 }
