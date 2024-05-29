@@ -7,7 +7,7 @@ export const InsertDB = (data, url) => {
             },
             body: JSON.stringify(data)
         })
-            .then(response => response.json().then(data => {
+            .then(response => {
                 if (!response.ok) {
                     if (response.status === 409) {
                         resolve(response); // Resuelve la Promise con el response completo
@@ -15,9 +15,9 @@ export const InsertDB = (data, url) => {
                         throw new Error('Ocurrió un error al hacer la solicitud.');
                     }
                 } else {
-                    resolve(data); // Resuelve la Promise con el data
+                    resolve(response); // Resuelve la Promise con el response completo
                 }
-            }))
+            })
             .catch(error => {
                 console.error('Error:', error);
                 reject(error); // Rechaza la Promise con el error

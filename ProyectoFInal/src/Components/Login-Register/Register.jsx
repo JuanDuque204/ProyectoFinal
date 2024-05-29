@@ -30,7 +30,7 @@ const Register = () => {
         email: data.user,
         contrase: data.password
       };
-      InsertDB(userNew,'http://localhost:3004/users')
+      InsertDB(userNew, "http://localhost:3004/users")
         .then(response => {
           if (response.status === 200) {
             Swal.fire({
