@@ -1,9 +1,9 @@
 // eslint-disable-next-line no-unused-vars
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Cart.css';
 import { RiDeleteBin6Line } from "react-icons/ri";
 import Swal from 'sweetalert2';
-const productos = [];
+
 const ProductosId = JSON.parse(localStorage.getItem('ProductosId')) || [];
 
 // Función para obtener productos por ID desde una API
@@ -22,9 +22,8 @@ const getProductsById = async (id) => {
 
 // Función para agregar un producto al carrito
 export const agregarProducto = async (id) => {
-  // Verifica si el producto ya existe en el carrito
   const productoExistente = ProductosId.find(producto => producto === id);
-  
+
   if (productoExistente) {
     Swal.fire({
       position: "top-end",
@@ -34,17 +33,12 @@ export const agregarProducto = async (id) => {
     });
     return;
   } else {
-    // Agrega el ID del producto al array ProductosId
     ProductosId.push(id);
-    // Guarda el array actualizado en el localStorage
     localStorage.setItem('ProductosId', JSON.stringify(ProductosId));
 
-    // Obtiene los detalles del producto y lo agrega a la lista productos
-    
-    const productDetails=await getProductsById(id);
+    const productDetails = await getProductsById(id);
 
     if (!productDetails.error) {
-      productos.push(productDetails);
       Swal.fire({
         icon: 'success',
         title: 'Añadido al carrito',
@@ -60,32 +54,32 @@ export const agregarProducto = async (id) => {
   }
 };
 
-// Función para inicializar la lista de productos al cargar la página
-const initializeProductos = async () => {
-  for (const id of ProductosId) {
-    const productDetails = await getProductsById(id);
-    if (!productDetails.error) {
-      productos.push(productDetails);
-    }
-  }
-};
-
-// Llama a la función de inicialización cuando se carga la página
-initializeProductos();
-
+// Componente Cart
 const Cart = () => {
+  const [productos, setProductos] = useState([]);
+
+  useEffect(() => {
+    const initializeProductos = async () => {
+      const productPromises = ProductosId.map(id => getProductsById(id));
+      const productList = await Promise.all(productPromises);
+      setProductos(productList.filter(product => !product.error));
+    };
+
+    initializeProductos();
+  }, []);
+
   const calculateTotal = () => {
     return productos.reduce((total, product) => total + parseFloat(product.precio), 0);
   };
 
- const Pagar = () => {
+  const Pagar = () => {
     Swal.fire({
       icon: 'success',
       title: 'Pago realizado con éxito',
       text: 'Gracias por su compra!',
     });
     localStorage.removeItem('ProductosId');
-
+    setProductos([]);
   };
 
   const Cancelar = () => {
@@ -95,13 +89,22 @@ const Cart = () => {
       text: 'Su compra ha sido cancelada.',
     });
     localStorage.removeItem('ProductosId');
- 
+    setProductos([]);
   };
 
   const EliminarProduct = (id) => {
-    const nuevosProductosId = ProductosId.filter(productId => id !== productId);
+    const nuevosProductos = productos.filter(product => product.id_producto !== id);
+    setProductos(nuevosProductos);
+  
+    const nuevosProductosId = ProductosId.filter(productId => productId !== id);
     localStorage.setItem('ProductosId', JSON.stringify(nuevosProductosId));
-  }
+  
+    Swal.fire({
+      icon: 'info',
+      title: 'Producto eliminado',
+      text: 'El producto ha sido eliminado del carrito.',
+    });
+  };
   
 
   return (
@@ -112,20 +115,21 @@ const Cart = () => {
           <li key={product.id_producto} className="product-item">
             <span className="product-name">{product.nombre}</span>
             <span className="product-price">${product.precio}</span>
-            <span className='product-name'>{product.descripcion}</span>
-            <span className='product-price'><input type="number" name="" id="" placeholder='#' className='product-quantity' /></span>
-            <span className='product-price'><button className='button-delete' onClick={() => EliminarProduct(product.id_producto)}><RiDeleteBin6Line /></button></span>
+            <span className="product-description">{product.descripcion}</span>
+            <span className="product-quantity"><input type="number" placeholder='#' className='product-quantity' /></span>
+            <button className='button-delete' onClick={() => EliminarProduct(product.id_producto)}>
+              <RiDeleteBin6Line />
+            </button>
           </li>
         ))}
       </ul>
       <p className="cart-total">Total: ${calculateTotal()}</p>
       <div className="button-container">
-      <button className="pay-button" onClick={Pagar}>Pagar</button>
+        <button className="pay-button" onClick={Pagar}>Pagar</button>
         <button className="cancel-button" onClick={Cancelar}>Cancelar</button>
       </div>
     </div>
-  );  
+  );
 };
 
 export default Cart;
-

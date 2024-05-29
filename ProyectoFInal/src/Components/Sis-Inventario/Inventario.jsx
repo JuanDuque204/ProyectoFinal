@@ -43,7 +43,7 @@ const InventariO = () => {
   };
 
   const handleSubmit = async (e) => {
-   // e.preventDefault(); // evita que la página se recargue
+  // e.preventDefault(); // evita que la página se recargue
 
     const newProduct = {
       id_producto: nuevoProducto.id_producto,
@@ -60,12 +60,15 @@ const InventariO = () => {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(newProduct),
+          
         });
       } else {
         response = await fetch('http://localhost:3004/products', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(newProduct),
+          
+          
         });
       }
 
